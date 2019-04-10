@@ -98,7 +98,7 @@ Logout(){
     }
     return (
       <div>
-        <NavbarH onLogout={this.Logout.bind(this)} onLogin={this.showLock.bind(this)}/> 
+        <NavbarH onLogout={this.Logout.bind(this)} onLogin={this.showLock.bind(this)} idToken = {this.state.idToken} lock = {this.lock}/> 
        {git}
        
       </div>

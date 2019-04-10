@@ -7,13 +7,25 @@ onLogin(){
 	this.props.onLogin();
 }
 
+onLogout(){
 
+this.props.onLogout();
+}
   render() {
+let page;
+
+if(this.props.idToken){
+	page = <a href= "#" onClick={this.onLogout.bind(this)}> LOGIN</a>
+}else{
+	page= <a href= "#" onClick={this.onLogin.bind(this)}> LOGOUT</a>
+}
+
+
     return (
       <div>
       <Navbar>
+       {page}
 
-<a href= "#" onClick={this.onLogin.bind(this)}> LOGIN</a>
 <div>
 <h3>The GitHub Searcher</h3>
 </div>
