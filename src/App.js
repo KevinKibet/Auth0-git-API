@@ -34,6 +34,8 @@ this.lock.on('authenticated', (authResult)=>{
     }
     this.setProfile(authResult, idToken, profile);
   };
+
+  this.getProfile();
 });
 
 
@@ -45,6 +47,17 @@ setProfile(){
     idToken:localStorage.getItem('idToken'),
     profile:JSON.parse(localStorage.getItem('profile'))
   });
+}
+
+
+
+getProfile(){
+  if(localStorage.getItem('idToken') != null){
+    this.setState({
+    idToken:localStorage.getItem('idToken'),
+    profile:JSON.parse(localStorage.getItem('profile'))
+  }, ()=>{console.log(this.state)});
+  }
 }
 //auth0 = new auth0.WebAuth({
    // domain: 'dev-hc9pbwhc.auth0.com',
@@ -62,11 +75,32 @@ showLock(){
   //this.auth0.authorize();
 
 }
+
+
+Logout(){
+
+  this.setState({
+    idToken:'',
+    profile:''
+  }, ()=>{
+
+    localStorage.removeItem('idToken');
+    localStorage.removeItem('profile');
+  })
+}
+
   render() {
+    let git;
+    if(this.state.idToken){
+     git = <GitHuB/>
+    }else{
+      git = "click login, you are not loggedin yet"
+    }
     return (
       <div>
-        <NavbarH onLogin={this.showLock.bind(this)}/> 
-        <GitHuB/>
+        <NavbarH onLogout={this.Logout.bind(this)} onLogin={this.showLock.bind(this)}/> 
+       {git}
+       
       </div>
     );
   }
