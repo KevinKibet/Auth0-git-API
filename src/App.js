@@ -13,7 +13,7 @@ constructor(props){
   super(props);
 
   this.state={
-    id:'',
+    idToken:'',
     profile:{},
     t: new Auth0Lock(this.props.ClientID, this.props.Domain)
   };
@@ -27,9 +27,25 @@ static defaultProps={
 componentWIillMount(){
 //this.lock= new Auth0Lock(this.props.ClientID, this.props.Domain);
 this.lock.on('authenticated', (authResult)=>{
-  console.log(authResult);
+  this.lock.getProfile(authResult, idToken, (error, profile)=>{
+    if (error){
+      console.log(error);
+      return ;
+    }
+    this.setProfile(authResult, idToken, profile);
+  };
 });
 
+
+setProfile(){
+  localStorage.setItem('idToken', idToken);
+  localStorage.setItem('profile', JSON.stringify(profile));
+
+  this.setState({
+    idToken:localStorage.getItem('idToken'),
+    profile:JSON.parse(localStorage.getItem('profile'))
+  });
+}
 //auth0 = new auth0.WebAuth({
    // domain: 'dev-hc9pbwhc.auth0.com',
    // clientID: 'dq37WQBZnMDsPWC1hohqDMHTr6rFQ73P',
