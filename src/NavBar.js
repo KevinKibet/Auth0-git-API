@@ -15,9 +15,9 @@ this.props.onLogout();
 let page;
 
 if(this.props.idToken){
-	page = <a href= "#" onClick={this.onLogout.bind(this)}> LOGIN</a>
+	page = <a href= "#" onClick={this.onLogout.bind(this)}> LOGOUT</a>
 }else{
-	page= <a href= "#" onClick={this.onLogin.bind(this)}> LOGOUT</a>
+	page= <a href= "#" onClick={this.onLogin.bind(this)}> LOGIN</a>
 }
 
 

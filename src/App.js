@@ -25,21 +25,23 @@ static defaultProps={
 }
 
 componentWIillMount(){
-//this.lock= new Auth0Lock(this.props.ClientID, this.props.Domain);
+this.lock= new Auth0Lock(this.props.ClientID, this.props.Domain);
 this.lock.on('authenticated', (authResult)=>{
-  this.lock.getProfile(authResult, idToken, (error, profile)=>{
+  this.lock.getProfile(authResult.idToken, (error, profile)=>{
     if (error){
       console.log(error);
       return ;
     }
-    this.setProfile(authResult, idToken, profile);
-  };
-
-  this.getProfile();
-});
-
-
+    this.setProfile(authResult.idToken, profile);
+  // console.log(profile)
+  });
+  
+  });
+this.getProfile();
+}
 setProfile(){
+  let idToken = this.state.idToken ;
+  let profile = this.state.profile ;
   localStorage.setItem('idToken', idToken);
   localStorage.setItem('profile', JSON.stringify(profile));
 
@@ -67,14 +69,12 @@ getProfile(){
    // scope: 'openid'
  // });
 
-}
+//}
 
 
-showLock(){
+showLock() {
   this.state.t.show();
-  //this.auth0.authorize();
-
-}
+  }
 
 
 Logout(){
@@ -91,10 +91,10 @@ Logout(){
 
   render() {
     let git;
-    if(this.state.idToken){
+    if(this.state.idToken==null){
      git = <GitHuB/>
     }else{
-      git = "click login, you are not loggedin yet"
+      git = "hey not going well"
     }
     return (
       <div>
