@@ -52,7 +52,7 @@ class GitHuB extends Component {
     return (
       <div>
          
-        <Search/>
+        <Search   search={this.getProfile.bind(this)}/>
         <Profile/>
       </div>
     );
