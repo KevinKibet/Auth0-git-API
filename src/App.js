@@ -92,9 +92,9 @@ Logout(){
   render() {
     let git;
     if(this.state.idToken==null){
-     git = <GitHuB/>
+     git = '';
     }else{
-      git = "hey not going well"
+      git = <GitHuB/>
     }
     return (
       <div>

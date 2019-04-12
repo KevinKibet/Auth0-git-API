@@ -12,7 +12,7 @@ class Profile extends Component {
   	let following = `${userdata.homeURL}/following`;
   	let repos = `${userdata.homeURL}/repositories`;
    
-if(){
+if(userdata.notFound=== 'User not Found'){
 
 	 return (
       <div>
@@ -29,7 +29,7 @@ if(){
       <div>
          <section>
          <div>
-             <a href={userdata.homeURL} target="_blank" title={userdata.name || userdata.username } <img src={userdata.avatar}></img>/a>
+             <a href={userdata.homeURL} target="_blank" title={userdata.name || userdata.username }> <img src={userdata.avatar}></img></a>
              <h2><a href={userdata.homeURL} title={userdata.username} target="_blank">{userdata.name || userdata.username}</a></h2>
               <h3>{userdata.location}</h3>
           </div>
@@ -38,7 +38,7 @@ if(){
           <ul>
 
           <li>
-          <a href={followers} target="_blank" title="No of followers" <i>{userdata.followers}</i></a>
+          <a href={followers} target="_blank" title="No of followers" ><i>{userdata.followers}</i></a>
           </li>
           <li>
           <a href={repos} target="_blank" title="No of Repository" ><i>{userdata.ropos}</i></a>
@@ -51,7 +51,7 @@ if(){
           </ul>
           </div>
 
-         <section/>
+         </section>
      
       </div>
     );

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import Search from './Search';
+import Profile from './Profile';
 //import NavbarH from './NavBar'
 const API = 'https://api.github.com/users' ;
 class GitHuB extends Component {
 	constructor(props){
 		super(props);
 		this.state={
-			username:'',
+			username:'KevinKibet',
 			name:'',
 			avatar:'',
 			repos:'',

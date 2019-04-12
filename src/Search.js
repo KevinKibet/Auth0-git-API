@@ -17,9 +17,9 @@ submit(event){
       <div>
         <form onSubmit={this.submit.bind(this)}>
 
-         <label> SEARCH<input type="search" ref="username" placeholder="Enter What you want to search"/><label/>
+         <label> SEARCH<input type="search" ref="username" placeholder="Enter What you want to search"/></label>
 
-        <form/>
+        </form>
       </div>
     );
   }
